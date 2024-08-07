@@ -7,7 +7,7 @@ import router from '@/router'
 const gameStore = useGameStore()
 
 const { setArmyToPlayer, getPlayerWihoutArmy } = gameStore
-const { armies, players } = storeToRefs(gameStore)
+const { armies } = storeToRefs(gameStore)
 
 const currentPlayer = ref(getPlayerWihoutArmy())
 
