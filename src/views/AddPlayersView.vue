@@ -3,6 +3,8 @@
     <h1>Write your name</h1>
     <AddPlayersForm />
     <PlayersList />
+
+    <RouterLink to="/select-army">Select Army</RouterLink><br />
   </div>
 </template>
 <script setup>
