@@ -1,25 +1,31 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useGameStore } from '@/stores/game'
+import router from '@/router'
 
 const gameStore = useGameStore()
 
-const { setArmyToPlayer } = gameStore
-const { armies } = storeToRefs(gameStore)
+const { setArmyToPlayer, getPlayerWihoutArmy } = gameStore
+const { armies, players } = storeToRefs(gameStore)
 
-onMounted(() => {
-  gameStore.dispatchGetArmies()
+const currentPlayer = ref(getPlayerWihoutArmy())
+
+onMounted(async () => {
+  if (!currentPlayer.value) router.push('/game')
+  if (!armies.value.length) await gameStore.dispatchGetArmies()
 })
 
 const handleSelectArmy = (army) => {
-  console.log('handleSelectArmy', army)
-  setArmyToPlayer('Player 1', army)
+  currentPlayer.value ? setArmyToPlayer(currentPlayer.value.id, army) : null
+  currentPlayer.value = getPlayerWihoutArmy()
+  if (!currentPlayer.value) router.push('/game')
 }
 </script>
 
 <template class="select-army">
   <main>
+    {{ currentPlayer?.name }} select your army
     <button v-for="army in armies" :key="army.id" @click="handleSelectArmy(army)">
       {{ army.name }}
     </button>

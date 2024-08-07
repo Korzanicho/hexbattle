@@ -14,9 +14,9 @@ export const useGameStore = defineStore('game', () => {
     armies.value = mockedArmiesData
   }
 
-  const setArmyToPlayer = (playerName: string, army) => {
-    const player = players.value.find((p) => p.name === playerName)
-    player.army = army
+  const setArmyToPlayer = (playerId: number, army) => {
+    const player = players.value.find((p) => p.id === playerId)
+    if (player) player.army = army
   }
 
   const removePlayer = (playerId: number) => {
@@ -28,5 +28,17 @@ export const useGameStore = defineStore('game', () => {
     players.value.push({ id: players.value.length + 1, name: playerName, army: null, score: 20 })
   }
 
-  return { dispatchGetArmies, players, armies, setArmyToPlayer, removePlayer, addPlayer }
+  const getPlayerWihoutArmy = () => {
+    return players.value.find((player) => !player.army)
+  }
+
+  return {
+    armies,
+    players,
+    addPlayer,
+    removePlayer,
+    setArmyToPlayer,
+    dispatchGetArmies,
+    getPlayerWihoutArmy
+  }
 })

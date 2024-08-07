@@ -24,9 +24,7 @@ const hexBoard = ref([
   [null, null, null, null]
 ])
 
-// onMounted(() => {
-// })
-const hexWidth = 80
+const hexWidth = 55
 const hexHeight = (hexWidth * Math.sqrt(3)) / 2
 const negativeMargin = -0.37 * hexHeight
 console.log(negativeMargin, 'negativeMargin')
