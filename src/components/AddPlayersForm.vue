@@ -7,7 +7,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { storeToRefs } from 'pinia'
 import { useGameStore } from '@/stores/game'
 
 const gameStore = useGameStore()
