@@ -1,0 +1,26 @@
+[
+	{
+		"id": 1,
+		"name": "Space Marines",
+		"troops": [
+			{
+				"id": 1,
+				"type": "normal",
+				"name": "Space monkey",
+				"image": "wojownik",
+				"attack": {
+					"1": [
+						{
+							"range": 1,
+							"damage": 1
+						}
+					]
+				},
+				"defence": {
+					"1": ["shield"]
+				},
+				"armor": 1
+			}
+		]
+	}
+]
