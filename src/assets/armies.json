@@ -5,6 +5,42 @@
 		"troops": [
 			{
 				"id": 1,
+				"type": "main",
+				"name": "Main ship",
+				"image": "wojownik",
+				"attack": {
+					"1": [
+						{
+							"range": 1,
+							"damage": 1
+						}
+					]
+				},
+				"defence": {
+					"1": ["shield"]
+				},
+				"lives": 20
+			},
+			{
+				"id": 2,
+				"type": "main",
+				"name": "Main ship 2",
+				"image": "wojownik",
+				"attack": {
+					"1": [
+						{
+							"range": 1,
+							"damage": 1
+						}
+					]
+				},
+				"defence": {
+					"1": ["shield"]
+				},
+				"lives": 20
+			},
+			{
+				"id": 3,
 				"type": "normal",
 				"name": "Space monkey",
 				"image": "wojownik",
@@ -19,7 +55,7 @@
 				"defence": {
 					"1": ["shield"]
 				},
-				"armor": 1
+				"lives": 1
 			}
 		]
 	}
