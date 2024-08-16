@@ -24,14 +24,18 @@ const hexBoard = ref([
   [null, null, null, null]
 ])
 
-const hexWidth = 55
+const hexWidth = 47
 const hexHeight = (hexWidth * Math.sqrt(3)) / 2
 const negativeMargin = -0.37 * hexHeight
-console.log(negativeMargin, 'negativeMargin')
+const boardWidth = 55 * 7 + 10;
 </script>
 
 <template>
-  <div class="hex-board" @click="selectHex">
+  <div
+    class="hex-board"
+    @click="selectHex"
+    :style="{width: boardWidth + 'px'}"
+  >
     <div v-for="(row, i) in hexBoard" :key="i" class="hex-board__row">
       <div v-for="(hex, j) in row" :key="j" class="hex-board__hex">
         <img
@@ -51,6 +55,7 @@ console.log(negativeMargin, 'negativeMargin')
 
 <style lang="scss" scoped>
 .hex-board {
+  margin: 0 auto;
   &__row {
     display: flex;
     gap: 1px;

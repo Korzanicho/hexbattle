@@ -6,8 +6,8 @@ import router from '@/router'
 
 const gameStore = useGameStore()
 
-const { setArmyToPlayer, getPlayerWihoutArmy } = gameStore
-const { armies } = storeToRefs(gameStore)
+const { setArmyToPlayer, getPlayerWihoutArmy, shufflePlayers } = gameStore
+const { armies, turn, state } = storeToRefs(gameStore)
 
 const currentPlayer = ref(getPlayerWihoutArmy())
 
@@ -19,7 +19,12 @@ onMounted(async () => {
 const handleSelectArmy = (army) => {
   currentPlayer.value ? setArmyToPlayer(currentPlayer.value.id, army) : null
   currentPlayer.value = getPlayerWihoutArmy()
-  if (!currentPlayer.value) router.push('/game')
+  if (!currentPlayer.value) {
+    shufflePlayers()
+    turn.value = 0
+    state.value = 'putMain'
+    router.push('/game')
+  }
 }
 </script>
 
